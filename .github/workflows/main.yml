@@ -32,7 +32,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: debug
-        run: echo ${TAG} ${{ GITHUB_SHA }} ${GITHUB_SHA}
+        run: echo ${TAG} ${GITHUB_SHA}
       - name: Build docker image
         env:
 #            TAG: ${GITHUB_SHA::6}
