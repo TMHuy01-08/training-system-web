@@ -1,0 +1,5 @@
+DB_USER=user
+DB_PASS=pass
+DB_DATABASE=database
+DB_HOST=db
+DB_PORT=3306

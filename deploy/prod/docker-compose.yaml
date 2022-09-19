@@ -1,0 +1,32 @@
+version: '3.7'
+networks:
+  rails-prod:
+    name: rails-prod
+services:
+  db:
+    image: mysql:8.0.30-debian
+    # volumes:
+    #   - db_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    networks:
+      - rails-prod
+  web:
+    build:
+      context: ../..
+      target: production
+    depends_on:
+      - db
+    env_file:
+      - .env
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - rails-prod
+# volumes:
+#   db_data:

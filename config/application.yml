@@ -1,0 +1,7 @@
+host: <%= ENV.fetch("HOST") { "local" } %>
+host_port: <%= ENV.fetch("PORT") { 4000 } %>
+host_email:
+mail_user_name:
+mail_user_password:
+mail_address:
+mail_port:

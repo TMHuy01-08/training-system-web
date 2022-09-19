@@ -1,0 +1,43 @@
+version: '3.7'
+networks:
+  rails:
+    name: rails
+services:
+  db:
+    image: mysql:8.0.30-debian
+    # volumes:
+    #   - db_data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASS}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
+    networks:
+      - rails
+  web:
+    build:
+      context: ../..
+      target: development
+    volumes:
+      - ../..:/app
+    depends_on:
+      - db
+    env_file:
+      - .env
+    command: 
+      - sh
+      - -c
+      - |
+        sleep 5
+        rails assets:precompile
+        rails db:migrate
+        rm -f /app/tmp/pids/server.pid
+        rails server -p ${PORT} -b 0.0.0.0
+    ports:
+      - ${PORT}:${PORT}
+    networks:
+      - rails
+# volumes:
+#   db_data:

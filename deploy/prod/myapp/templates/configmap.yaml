@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: ConfigMap
+metadata:
+  name: {{ include "myapp.fullname" . }}-env
+  labels:
+    {{- include "myapp.labels" . | nindent 4 }}
+data:
+{{ range .Files.Lines ".env" }}
+  {{- include "helpers.convert-env" (dict "line" . )  | indent 2}}
+{{ end }}
