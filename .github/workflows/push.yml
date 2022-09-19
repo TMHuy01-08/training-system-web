@@ -1,0 +1,52 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Build and push Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+
+      - name: Login docker
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Check if docker image existed
+        id: existed
+        run: docker manifest inspect ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
+        continue-on-error: true
+      
+      - name: Set up Docker Buildx
+        if: steps.existed.outcome == 'failure'
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        if: steps.existed.outcome == 'failure'
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          target: production
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
+          cache-from: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:buildcache
+          cache-to: type=registry,ref=${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:buildcache,mode=max
+  deploy:
+    needs: build
+    name: Trigger pipeline Azure devops
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Pipelines Action
+        uses: alexrster/pipelines@v2
+        with:
+          azure-devops-project-url: http://uetbc.xyz:8888/DefaultCollection/Chuyen%20de%20Nhat%20Bon
+          azure-pipeline-name: 'Training-system-web'
+          azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+          azure-pipeline-variables: '{"TAG": "${{ github.sha }}", "IMAGE_REPOSITORY" : "${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}"}'
