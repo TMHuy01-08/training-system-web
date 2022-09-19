@@ -33,13 +33,15 @@ jobs:
           
       - name: Build docker image
         env:
-           TAG: ${GITHUB_SHA::6}
+#            TAG: ${GITHUB_SHA::6}
+          TAG: latest
         run: make build
 
       - name: Push docker image
         run: make push
         env:
-           TAG: ${GITHUB_SHA::6}
+#            TAG: ${GITHUB_SHA::6}
+          TAG: latest
       - name: Trigger ArgoCD
         run: echo "Hello argo"
 
