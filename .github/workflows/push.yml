@@ -28,7 +28,8 @@ jobs:
     uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
     with:
       tag: ${{ github.sha }}
-      image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
+      # image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
+      image_repository: aqaurius6666/training-system-web
       DOCKERHUB_USERNAME: inherit
       DOCKERHUB_TOKEN: inherit
     
