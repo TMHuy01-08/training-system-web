@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-secretKeyBase: ${SECRET_KEY_BASE}
+secretKeyBase: ${KEY_BASE}
 image:
   repository: ${IMAGE_REPOSITORY}
   pullPolicy: IfNotPresent
