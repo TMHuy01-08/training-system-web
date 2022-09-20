@@ -26,7 +26,8 @@ jobs:
         id: set
         run: echo "::set-output name=existed::$(echo ${{ steps.existed.outcome }})"
   build-push:
-    if: ${{ jobs.check-existed.ouputs.existed == 'failure' }}
+    needs: check-existed
+    if: ${{ needs.check-existed.outputs.existed != 'success' }}
     name: Build and push
     uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
     with:
