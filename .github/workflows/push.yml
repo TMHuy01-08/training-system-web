@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - master
+env:
+  image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
+  image_tag: ${GITHUB_SHA::6}
 
 jobs:
-  check-existed:
-    name: Check if docker image existed
+  build:
+    name: Build and push Docker image
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,25 +21,25 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: check
+      - name: Check if docker image existed
         id: existed
-        run: docker manifest inspect ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
+        run: docker manifest inspect ${{ env.image_repository }}:${{ env.image_tag }}
         continue-on-error: true
-      - name: set output
-        id: set
-        run: echo "::set-output name=existed::$(echo ${{ steps.existed.outcome }})"
-  build-push:
-    needs: check-existed
-    if: ${{ needs.check-existed.outputs.existed != 'success' }}
-    name: Build and push
-    uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
-    with:
-      tag: ${{ github.sha }}
-      # image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
-      image_repository: aqaurius6666/training-system-web
-      DOCKERHUB_USERNAME: inherit
-      DOCKERHUB_TOKEN: inherit
-    
+      
+      - name: Set up Docker Buildx
+        if: steps.existed.outcome == 'failure'
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build and push
+        if: steps.existed.outcome == 'failure'
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          target: production
+          tags: ${{ env.image_repository }}:${{ env.image_tag }}
+          cache-from: type=registry,ref=${{ env.image_repository }}:buildcache
+          cache-to: type=registry,ref=${{ env.image_repository }}:buildcache,mode=max
   deploy:
     needs: build
     name: Trigger pipeline Azure devops
@@ -48,4 +51,4 @@ jobs:
           azure-devops-project-url: http://uetbc.xyz:8888/DefaultCollection/Chuyen%20de%20Nhat%20Bon
           azure-pipeline-name: 'Training-system-web'
           azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-          azure-pipeline-variables: '{"TAG": "${{ github.sha }}", "IMAGE_REPOSITORY" : "${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}"}'
+          azure-pipeline-variables: '{"TAG": "${{ env.image_tag }}", "IMAGE_REPOSITORY" : "${{ env.image_repository }}"}'
