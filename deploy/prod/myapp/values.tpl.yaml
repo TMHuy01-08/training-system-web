@@ -9,15 +9,17 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ${TAG}
-healthcheck:
+healthcheck: {}
   livenessProbe:
     httpGet:
       path: /
       port: http
+    initialDelaySeconds: 30
   readinessProbe:
     httpGet:
       path: /
       port: http
+    initialDelaySeconds: 30
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
