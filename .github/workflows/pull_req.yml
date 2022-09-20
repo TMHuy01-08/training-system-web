@@ -22,7 +22,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      - uses: ${{ github.repository }}/.github/workflows/build-push.yml@${{ github.ref_name }}
+      - uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
         with:
           tag: ${{ github.sha }}
           image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
