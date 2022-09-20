@@ -7,6 +7,7 @@ on:
 
 jobs:
   check-existed:
+    id: check-existed
     name: Check if docker image existed
     runs-on: ubuntu-latest
     steps:
@@ -23,7 +24,7 @@ jobs:
         run: docker manifest inspect ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
         continue-on-error: true
   build-push:
-    if: steps.existed.outcome == 'failure'
+    if: jobs.check-existed.steps.existed.outcome == 'failure'
     name: Build and push
     uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
     with:
