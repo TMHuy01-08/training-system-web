@@ -25,6 +25,7 @@ spec:
       serviceAccountName: {{ include "myapp.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      restartPolicy: OnFailure
       containers:
         - name: {{ .Chart.Name }}-migrate
           securityContext:
