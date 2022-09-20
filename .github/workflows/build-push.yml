@@ -1,0 +1,40 @@
+name: Build and push
+
+on:
+  workflow_call:
+    inputs:
+      tag:
+        description: 'Tag'
+        required: true
+        type: string
+      image_repository:
+        description: 'Image repository'
+        required: true
+        type: string
+    secrets:
+      DOCKERHUB_USERNAME:
+        required: true
+      DOCKERHUB_TOKEN:
+        required: true
+jobs:
+  build-push:
+    steps:
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Login docker
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        target: production
+        tags: ${{ inputs.image_repository }}:${{ inputs.tag }}
+        cache-from: type=registry,ref=${{ inputs.image_repository }}:buildcache
+        cache-to: type=registry,ref=${{ inputs.image_repository }}:buildcache,mode=max
+
