@@ -1,0 +1,29 @@
+apiVersion: v1
+data:
+  DB_DATABASE: db
+  DB_HOST: mysql-headless
+  DB_PASS: pass
+  DB_PORT: "3306"
+  DB_USER: user
+  HOST: mysql-headless
+  PORT: "4000"
+  RAILS_ENV: production
+  RAILS_SERVE_STATIC_FILES: "true"
+  SECRET_KEY_BASE: ""aaaaaaaaaaaa
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: training-system-web
+    meta.helm.sh/release-namespace: training-system
+  creationTimestamp: "2022-09-20T04:06:38Z"
+  labels:
+    app.kubernetes.io/instance: training-system-web
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: training-system-web
+    app.kubernetes.io/version: 1.16.0
+    helm.sh/chart: training-system-web-0.1.0
+  name: training-system-web-env
+  namespace: training-system
+  resourceVersion: "48897447"
+  selfLink: /api/v1/namespaces/training-system/configmaps/training-system-web-env
+  uid: 290bc7dd-52ca-4719-a9d9-c8e720347be8
