@@ -22,8 +22,11 @@ jobs:
         id: existed
         run: docker manifest inspect ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
         continue-on-error: true
+      - name: set output
+        id: set
+        run: echo "::set-output name=existed::$(echo ${{ steps.existed.outcome }})"
   build-push:
-    if: jobs.check-existed.steps.existed.outcome == 'failure'
+    if: jobs.check-existed.ouputs.existed == 'failure'
     name: Build and push
     uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
     with:
