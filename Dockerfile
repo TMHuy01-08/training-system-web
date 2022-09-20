@@ -32,10 +32,12 @@ COPY --from=builder /app/bin ./bin
 COPY --from=builder /app/Rakefile . 
 COPY --from=builder /app/lib ./lib
 COPY --from=builder /app/config ./config 
+COPY --from=builder /app/config.ru /app/config.ru
 COPY --from=builder /app/db ./db
 COPY --from=builder /app/app ./app 
 COPY --from=builder /app/public ./public
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+# ENTRYPOINT [ "./entrypoint.sh" ]
+CMD [ "/bin/sh", "/app/entrypoint.sh" ]
 
 
