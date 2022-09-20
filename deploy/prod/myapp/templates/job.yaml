@@ -16,7 +16,8 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "myapp.selectorLabels" . | nindent 8 }}
+        helm.sh/chart: {{ include "myapp.chart" . }}
+        type: migrate-job
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
