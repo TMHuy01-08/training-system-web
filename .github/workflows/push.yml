@@ -6,7 +6,6 @@ on:
       - master
 env:
   image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
-  image_tag: ${{ github.sha }}
 
 jobs:
   build:
@@ -20,10 +19,16 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Get tags
+        id: tags
+        run: |
+          TAGS=${GITHUB_SHA::8}
+          echo "::set-output name=tag::$(echo $TAGS)"
+        shell: bash
 
       - name: Check if docker image existed
         id: existed
-        run: docker manifest inspect ${{ env.image_repository }}:${{ env.image_tag }}
+        run: docker manifest inspect ${{ env.image_repository }}:${{ steps.tags.outputs.tag }}
         continue-on-error: true
       
       - name: Set up Docker Buildx
@@ -37,7 +42,7 @@ jobs:
           context: .
           push: true
           target: production
-          tags: ${{ env.image_repository }}:${{ env.image_tag }}
+          tags: ${{ env.image_repository }}:${{ steps.tags.outputs.tag }}
           cache-from: type=registry,ref=${{ env.image_repository }}:buildcache
           cache-to: type=registry,ref=${{ env.image_repository }}:buildcache,mode=max
   deploy:
@@ -51,4 +56,4 @@ jobs:
           azure-devops-project-url: http://uetbc.xyz:8888/DefaultCollection/Chuyen%20de%20Nhat%20Bon
           azure-pipeline-name: 'Training-system-web'
           azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-          azure-pipeline-variables: '{"TAG": "${{ env.image_tag }}", "IMAGE_REPOSITORY" : "${{ env.image_repository }}"}'
+          azure-pipeline-variables: '{"TAG": "${{ needs.build.outputs.tag }}", "IMAGE_REPOSITORY" : "${{ env.image_repository }}"}'
