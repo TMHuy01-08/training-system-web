@@ -6,8 +6,8 @@ on:
       - master
 
 jobs:
-  build:
-    name: Build and push Docker image
+  check-existed:
+    name: Check if docker image existed
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,18 +18,19 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Check if docker image existed
+      - name: check
         id: existed
         run: docker manifest inspect ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
         continue-on-error: true
-
-      - uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
-        if: steps.existed.outcome == 'failure'
-        with:
-          tag: ${{ github.sha }}
-          image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
-          DOCKERHUB_USERNAME: inherit
-          DOCKERHUB_TOKEN: inherit
+  build-push:
+    if: steps.existed.outcome == 'failure'
+    name: Build and push
+    uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
+    with:
+      tag: ${{ github.sha }}
+      image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
+      DOCKERHUB_USERNAME: inherit
+      DOCKERHUB_TOKEN: inherit
     
   deploy:
     needs: build
