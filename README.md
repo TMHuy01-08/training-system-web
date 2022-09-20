@@ -1,4 +1,5 @@
 # README
+[![Azure pipeline](http://10.8.0.6/DefaultCollection/_apis/public/Release/badge/82f8074d-09e4-4f24-9469-65350881d1d6/1/1)]
 
 Install Ruby On Rails 6, MySQL
 Step to step:

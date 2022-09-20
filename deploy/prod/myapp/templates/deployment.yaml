@@ -37,11 +37,12 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "myapp.fullname" . }}-env
-            - name: SECRET_KEY_BASE
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "myapp.fullname" . }}-secret
-                  key: secret-key-base
+          env:
+          - name: SECRET_KEY_BASE
+            valueFrom:
+              secretKeyRef:
+                name: {{ include "myapp.fullname" . }}-secret
+                key: secret-key-base
           ports:
             - name: http
               containerPort: {{ .Values.service.port | default 4000 }}
