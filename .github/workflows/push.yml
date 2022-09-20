@@ -6,7 +6,7 @@ on:
       - master
 env:
   image_repository: ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}
-  image_tag: ${GITHUB_SHA::6}
+  image_tag: ${{ github.sha }}
 
 jobs:
   build:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
+  
       - name: Login docker
         uses: docker/login-action@v2
         with:
