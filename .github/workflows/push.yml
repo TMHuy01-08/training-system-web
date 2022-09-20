@@ -23,7 +23,7 @@ jobs:
         run: docker manifest inspect ${{ secrets.DOCKERHUB_USERNAME }}/${{ secrets.APP_NAME }}:${{ github.sha }}
         continue-on-error: true
 
-      - uses: ${{ github.repository }}/.github/workflows/build-push.yml@${{ github.ref_name }}
+      - uses: aqaurius6666/training-system-web/.github/workflows/build-push.yml@master
         if: steps.existed.outcome == 'failure'
         with:
           tag: ${{ github.sha }}
