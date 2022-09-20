@@ -7,7 +7,6 @@ on:
 
 jobs:
   check-existed:
-    id: check-existed
     name: Check if docker image existed
     runs-on: ubuntu-latest
     steps:
