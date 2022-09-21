@@ -6,6 +6,13 @@ metadata:
     {{- include "myapp.labels" . | nindent 4 }}
 spec:
   backoffLimit: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "myapp.fullname" . }}-migrate-job
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/version: {{ .Chart.AppVersion }}
+      app.kubernetes.io/component: migrate
+      helm.sh/chart: {{ include "myapp.chart" . }}
   template:
     metadata:
       annotations:
@@ -16,8 +23,11 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
+        app.kubernetes.io/name: {{ include "myapp.fullname" . }}-migrate-job
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion }}
+        app.kubernetes.io/component: migrate
         helm.sh/chart: {{ include "myapp.chart" . }}
-        type: migrate-job
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:

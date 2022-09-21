@@ -25,6 +25,7 @@ jobs:
         id: tags
         run: |
           TAGS=${GITHUB_SHA::8}
+          echo $TAGS
           echo "::set-output name=value::$(echo $TAGS)"
         shell: bash
 
