@@ -1,3 +1,5 @@
-<h1>Edit question</h1>
+<% provide :title, t(".title") %>
+<% provide :button_text, t(".save_changes") %>
+<h1><%= t ".title" %></h1>
 <%= render "form", url: admin_question_path(@question.id) %>
 <%= javascript_pack_tag "question", "data-turbolinks-track": "reload" %>

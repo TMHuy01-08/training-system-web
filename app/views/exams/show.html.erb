@@ -1,10 +1,11 @@
 <% provide :title, t(".title") %>
-<h1><%= @exam.subject_name %></h1>
+<h1><%= @subject.name %></h1>
 <hr>
 <div class="user-exam">
   <% if @exam.doing? %>
     <%= hidden_field_tag :endtime, @exam.endtime %>
     <%= hidden_field_tag :exam_id, @exam.id %>
+    <%= hidden_field_tag :subject_id, @subject.id %>
     <div class="fixed clock-fixed">
       <div><i class="fa fa-clock-o" aria-hidden="true"></i></div>
       <div class="countdown"></div>

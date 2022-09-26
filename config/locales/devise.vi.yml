@@ -51,11 +51,13 @@ vi:
       updated_but_not_signed_in: "Your account has been updated successfully, but since your password was changed, you need to sign in again."
     sessions:
       new:
-        title: "Log in"
-        new_user: "New User?"
-        sign_up_now: "Sign up now!"
-        remember_me: "Remember me on this computer"
-        forgot_password: "(forgot password)"
+        title: "Đăng nhập"
+        email: "Email"
+        password: "Mật khẩu"
+        new_user: "Bạn là người dùng mới?"
+        sign_up_now: "Đăng ký ngay!"
+        remember_me: "Ghi nhớ tài khoản"
+        forgot_password: "(quên mật khẩu)"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."

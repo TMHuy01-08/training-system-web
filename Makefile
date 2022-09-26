@@ -29,4 +29,6 @@ push:
 local:
 	@ bin/rails s -b 0.0.0.0 -p ${PORT}
 
-# run cmd: export $(grep -v '^#' .env | xargs)
+# run cmd:
+# spring stop
+# export $(grep -v '^#' .env | xargs)

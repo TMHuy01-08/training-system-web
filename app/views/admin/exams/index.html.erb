@@ -23,7 +23,7 @@
               <td><%= raw status_exam exam %></td>
               <td><%= exam.subject.question_number %></td>
               <td>
-                <%= exam.check_status exam %>
+                <%= exam.check_result exam %>
               </td>
               <td>
                 <%= link_to "View", admin_user_exam_path(@user.id, exam.id), class: "btn btn-success" %>

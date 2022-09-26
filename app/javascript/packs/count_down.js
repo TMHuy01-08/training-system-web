@@ -8,14 +8,11 @@ $(document).on("turbolinks:load", function () {
     function getTimeRemaining(endtime) {
       const total = Date.parse(endtime) - Date.parse(new Date());
       const seconds = Math.floor((total / 1000) % 60);
-      const minutes = Math.floor((total / 1000 / 60) % 60);
       const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
-      const days = Math.floor(total / (1000 * 60 * 60 * 24));
+      const minutes = Math.floor((total / 1000 / 60) % 60) + hours * 60;
 
       return {
         total,
-        days,
-        hours,
         minutes,
         seconds,
       };
@@ -29,6 +26,7 @@ $(document).on("turbolinks:load", function () {
         : time_left.minutes + ":" + time_left.seconds;
 
     var exam_id = $("#exam_id").val();
+    var subject_id = $("#subject_id").val();
 
     var interval = setInterval(function () {
       var timer = timer2.split(":");
@@ -42,8 +40,10 @@ $(document).on("turbolinks:load", function () {
       timer2 = minutes + ":" + seconds;
 
       if (
-        String(window.location.pathname) != `/en/exams/${exam_id}` &&
-        String(window.location.pathname) != `/vi/exams/${exam_id}`
+        String(window.location.pathname) !=
+          `/en/subjects/${subject_id}/exams/${exam_id}` &&
+        String(window.location.pathname) !=
+          `/vi/subjects/${subject_id}/exams/${exam_id}`
       )
         clearInterval(interval);
       if (seconds <= 0 && minutes <= 0) clearInterval(interval);

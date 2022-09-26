@@ -25,17 +25,28 @@ module ExamsHelper
       correct_answer = current_question.answers.find_by is_correct: true
       result = user_answers.include?(correct_answer) ? "correct" : "wrong"
     when Question.types[:multiple]
-      result = "correct"
-      correct_answers = current_question.answers.get_answers(true)
+      result = result_of_mul current_question, user_answers
+    end
+
+    show_result result
+  end
+
+  def result_of_mul current_question, user_answers
+    result = "correct"
+    correct_answers = current_question.answers.get_answers(true)
+    choose = user_answers.where question_id: current_question.id
+    if correct_answers.length != choose.length
+      result = "wrong"
+    else
       correct_answers.each do |answer|
-        if user_answers.exclude? answer
+        if choose.exclude? answer
           result = "wrong"
           break
         end
       end
     end
 
-    show_result result
+    result
   end
 
   def show_result result

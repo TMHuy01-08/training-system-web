@@ -1,0 +1,35 @@
+<% provide(:title, t(".title" )) %>
+<h1><%= t ".title" %></h1>
+<div>
+  <%= search_form_for @search, class: "form-inline" do |search| %>
+    <%= search.search_field :name, class: "form-control" %>
+    <%= search.submit class: "btn btn-primary form-control" %>
+  <% end %>
+  <% if @subject_item.any? %>
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col"><%= sort_link @search, :name, t(".name") %></th>
+          <th scope="col"><%= t ".ques_num" %></th>
+          <th scope="col"><%= t ".duration" %></th>
+          <th scope="col"><%= t ".score_pass" %></th>
+          <th scope="col"><%= t ".description" %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @subject_item.each do |subject| %>
+          <tr>
+            <td><%= subject.name %></td>
+            <td><%= subject.question_number %></td>
+            <td><%= subject.duration %></td>
+            <td><%= subject.score_pass %></td>
+            <td><%= subject.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%== pagy_bootstrap_nav(@pagy) %>
+  <% else %>
+    <%= t ".no_subject" %>
+  <% end %>
+</div>

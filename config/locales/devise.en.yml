@@ -1,4 +1,3 @@
-# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
 en:
   devise:
     confirmations:
@@ -53,6 +52,8 @@ en:
     sessions:
       new:
         title: "Log in"
+        email: "Email"
+        password: "Password"
         new_user: "New User?"
         sign_up_now: "Sign up now!"
         remember_me: "Remember me on this computer"

@@ -38,12 +38,26 @@ module ApplicationHelper
   def button_exam exam
     case exam.status
     when "ready"
-      link_to t("ready"), exam_path(exam.id), class: "btn btn-primary"
+      link_to t("ready"),
+              subject_exam_path(exam.subject.id, exam.id),
+              class: "btn btn-primary"
     when "doing"
-      link_to t("continue"), exam_path(exam.id), class: "btn btn-info"
+      link_to t("continue"),
+              subject_exam_path(exam.subject.id, exam.id),
+              class: "btn btn-info"
     else
-      link_to t("view"), exam_path(exam.id), class: "btn btn-success"
+      link_to t("view"),
+              subject_exam_path(exam.subject.id, exam.id),
+              class: "btn btn-info"
     end
+  end
+
+  def status_subject subject
+    list_exam = Exam.by_subject_id(subject.id).by_user(current_user.id)
+    return "" if list_exam.empty?
+    return "active" unless list_exam.by_statuses("passed").empty?
+
+    "inactive"
   end
 
   def status_account user

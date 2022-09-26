@@ -32,22 +32,22 @@ vi:
       account: "Tài khoản"
       log_out: "Đăng xuất"
       questions: "Quản lý câu hỏi"
-  static_pages:
-    home:
+  subjects:
+    index:
       heading: "Trang chủ"
       welcome: "Chào mừng đến với Maxe"
       intro: "Hệ thống quản lý kỳ thi"
       signup: "Đăng ký ngay"
-      create_exam: "Tạo bài thi"
-      all_exam: "Tất cả"
-      create_date: "Ngày tạo"
-      subject: "Môn học"
-      status: "Trạng thái"
+      title: "Tất cả môn học"
+      name: "Tên môn học"
+      ques_num: "Số câu hỏi"
       duration: "Thời gian (phút)"
-      ques_num: "Số  câu hỏi"
-      score: "Điểm số "
-      no_exam: "Chưa có bài thi"
-  subjects:
+      score_pass: "Điểm đạt"
+      description: "Mô tả"
+      no_subject: "Chưa có môn học"
+      all_exam: "Tất cả"
+      subject: "Môn học"
+  static_pages:
     index:
       title: "Tất cả môn học"
       name: "Tên môn học"
@@ -75,6 +75,15 @@ vi:
       title: "Chỉnh sửa tài khoản"
       update: "Cập nhật"
   exams:
+    index:
+      practice: "Luyện tập"
+      create_date: "Ngày tạo"
+      status: "Trạng thái"
+      description: "Mô tả"
+      ques: "câu hỏi"
+      min: "phút"
+      score: "Điểm số"
+      no_exam: "Chưa có bài thi"
     create:
       success_create: "Tạo bài kiểm tra thành công"
       fail_create: "Tạo bài kiểm tra thất bại"
@@ -133,19 +142,22 @@ vi:
         subject: "Môn học"
         type: "Loại câu hỏi"
         save: "Lưu"
-        submit: "Tạo câu hỏi"
       answer_fields:
         answer_content: "Nội dung"
         is_correct: "Đúng"
         remove: "Xóa câu đáp án"
       new:
-        title: "Câu hỏi mới"
+        title: "Tạo câu hỏi mới"
+        submit: "Tạo câu hỏi"
       create:
         create_failed: "Tạo câu hỏi chưa thành công"
         created: "Tạo câu hỏi thành công!"
       index:
         all_question: "Tất cả câu hỏi"
         create: "Tạo câu hỏi mới"
+      edit:
+        title: "Chỉnh sửa câu hỏi"
+        save_changes: "Lưu thay đổi"
     subjects:
       index:
         title: "Tất cả môn học"
@@ -208,7 +220,7 @@ vi:
       multiple: "Chọn nhiều đáp án"
   exam:
     status:
-      ready: "Bắt đầu"
+      ready: "Sẵn sàng"
       doing: "Đang làm"
       completed: "Hoàn thành"
       failed: "Không đạt"

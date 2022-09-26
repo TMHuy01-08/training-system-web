@@ -19,7 +19,7 @@ class Exam < ApplicationRecord
 
   scope :newest, ->{order(created_at: :desc)}
   scope :by_user, ->(user_id){where(user_id: user_id)}
-  scope :by_id, ->(id){where(id: id)}
+  scope :by_subject_id, ->(id){where(subject_id: id)}
   scope :by_statuses, ->(statuses){where(status: statuses)}
   delegate :name, to: :subject, prefix: true
 
@@ -39,27 +39,27 @@ class Exam < ApplicationRecord
     I18n.t("exam.status.#{type}")
   end
 
-  def check_status exam
+  def check_result exam
     if exam.ready? || exam.doing?
       ""
     else
-      "#{exam.result}/#{exam.subject.question_number}"
+      "#{exam.result} / #{exam.subject.question_number}"
     end
   end
 
-  def grade
+  def grade user_select
     result = self.result
     questions = self.questions
 
-    multi = questions.find_by question_type: Question.types[:multiple]
+    multi = questions.get_by_type Question.types[:multiple]
     have_multi_choice = multi.present?
-    result = grading_multi_choice result if have_multi_choice
+    result = grading_multi_choice result, user_select if have_multi_choice
 
-    single = questions.find_by question_type: Question.types[:single]
+    single = questions.get_by_type Question.types[:single]
     have_single_choice = single.present?
     if have_single_choice
       list_single = Question.get_by_type Question.types[:single]
-      result = grading_single_choice list_single, result
+      result = grading_single_choice list_single, result, user_select
     end
 
     update_status result
@@ -72,13 +72,12 @@ class Exam < ApplicationRecord
 
   private
 
-  def grading_single_choice list_single, result
+  def grading_single_choice list_single, result, list
     correct_answers = list_single.map do |question|
       question.answers.find_by is_correct: true
     end
 
-    user_answers = get_user_answers Question.types[:single]
-
+    user_answers = get_user_answers Question.types[:single], list
     user_answers.compact!
 
     user_answers.each do |answer|
@@ -87,18 +86,22 @@ class Exam < ApplicationRecord
     result
   end
 
-  def get_user_answers question_type
-    answers.map do |answer|
+  def get_user_answers question_type, list
+    list.map do |answer|
       answer if answer.question.question_type == question_type
     end
   end
 
-  def grading_multi_choice result
-    user_answers = get_user_answers Question.types[:multiple]
-
+  def grading_multi_choice result, list
+    user_answers = get_user_answers Question.types[:multiple], list
     user_answers.compact!
 
+    handle_result result, user_answers
+  end
+
+  def handle_result result, user_answers
     current_check = Question.new
+
     user_answers.each do |answer|
       current_question = answer.question
       next if current_question == current_check
@@ -107,6 +110,7 @@ class Exam < ApplicationRecord
       answers_selected = user_answers.map do |select|
         select if select.question == current_question
       end
+      answers_selected.compact!
 
       next unless correct_answers.length == answers_selected.length
 

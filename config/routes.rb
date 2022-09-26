@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|vi/ do
-    root "static_pages#home"
-    resources :subjects, only: %i(index)
+    root "subjects#index"
+    resources :static_pages, only: %i(index)
+    resources :subjects, only: %i(index) do
+      resources :exams, only: %i(show create update index)
+    end
     devise_for :users, :controllers => {:registrations => "registrations"}
-    resources :exams, only: %i(show create update)
     resources :users
-    
+
     resources :relationships, only: %i(create)
-    
+
     namespace :admin do
       root to: "static_pages#index"
       resources :static_pages, only: %i(index)
