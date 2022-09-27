@@ -1,5 +1,8 @@
 # README
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1ec52ad (update https url)
 ![Deploy status](https://azure.aqaurius6666.space/DefaultCollection/_apis/public/Release/badge/82f8074d-09e4-4f24-9469-65350881d1d6/1/1)
 
 Install Ruby On Rails 6, MySQL
