@@ -217,7 +217,7 @@ td {
   user-select: none;
 
   font-weight: bold;
-  color: white
+  color: white;
 }
 
 .ready-status {
@@ -259,7 +259,7 @@ td {
 
 /* answer in exam */
 
-.answer-collect>label {
+.answer-collect > label {
   font-size: 20px;
   display: flex;
   flex-direction: row;
@@ -349,4 +349,8 @@ td {
 .flex-end {
   display: flex;
   justify-content: flex-end;
+}
+
+.toast-top-right {
+  top: 62px !important;
 }

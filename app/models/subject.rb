@@ -11,6 +11,7 @@ class Subject < ApplicationRecord
   validates :duration, :question_number, :score_pass,
             numericality: {only_integer: true}
   validate :check_score_pass, on: %i(create update)
+  scope :this_month, ->{where(created_at: Time.zone.today.all_month)}
 
   private
   def check_score_pass
