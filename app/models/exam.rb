@@ -21,6 +21,7 @@ class Exam < ApplicationRecord
   scope :by_user, ->(user_id){where(user_id: user_id)}
   scope :by_subject_id, ->(id){where(subject_id: id)}
   scope :by_statuses, ->(statuses){where(status: statuses)}
+  scope :this_month, ->{where(created_at: Time.zone.today.all_month)}
   delegate :name, to: :subject, prefix: true
 
   ransacker :created_at, type: :date do
