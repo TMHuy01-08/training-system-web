@@ -105,6 +105,16 @@ en:
         num_created: "Number of times the test was created"
         num_passed: "Number of tests passed"
         description: "Description"
+        user: "User"
+        subject: "Subject"
+        exam: "Exam"
+        exam_passed: "Exam passed"
+        this_month: "This month"
+        statistics_test_by_date: "Statistics of tests created by date"
+        statistics_test_by_subject: "Statistics of tests by subject"
+        statistics_test_by_status: "Statistics of tests by status"
+        list_subject: "List of detailed subject information"
+        no_subject: "No subjects available"
     users:
       index:
         title: "Manage users"

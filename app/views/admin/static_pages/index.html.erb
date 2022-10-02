@@ -1,33 +1,109 @@
 <% provide(:title, t(".title")) %>
 <h1><%= t ".heading" %></h1>
 <div class="row">
+  <!-- order-card start -->
+  <div class="col-md-3 col-xl-3">
+      <div class="card bg-c-blue custom-card">
+          <div class="card-block">
+              <h6 class="m-b-20"><%= t ".user" %></h6>
+              <h2 class="text-right"><i class="fa fa-user float-left"></i><span><%= @user_sum %></span></h2>
+              <p class="m-b-0"><%= t ".this_month" %><span class="float-right"><i class="fa fa-arrow-up" aria-hidden="true"></i> <%= @user_sum_this_month %></span></p>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-3 col-xl-3">
+      <div class="card bg-c-green custom-card">
+          <div class="card-block">
+              <h6 class="m-b-20"><%= t ".subject" %></h6>
+              <h2 class="text-right"><i class="fa fa-book float-left"></i><span><%= @subject_sum %></span></h2>
+              <p class="m-b-0"><%= t ".this_month" %><span class="float-right"><i class="fa fa-arrow-up" aria-hidden="true"></i> <%= @subject_sum_this_month %></span></p>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-3 col-xl-3">
+      <div class="card bg-c-yellow custom-card">
+          <div class="card-block">
+              <h6 class="m-b-20"><%= t ".exam" %></h6>
+              <h2 class="text-right"><i class="fa fa-file-text-o float-left"></i><span><%= @exam_sum %></span></h2>
+              <p class="m-b-0"><%= t ".this_month" %><span class="float-right"><i class="fa fa-arrow-up" aria-hidden="true"></i>  <%= @exam_sum_this_month %></span></p>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-3 col-xl-3">
+      <div class="card bg-c-pink custom-card">
+          <div class="card-block">
+              <h6 class="m-b-20"><%= t ".exam_passed" %></h6>
+              <h2 class="text-right"><i class="fa fa-file-text-o float-left"><i class="fa fa-check check-position"></i></i><span><%= @exam_passed_sum %></span></h2>
+              <p class="m-b-0"><%= t ".this_month" %><span class="float-right"><i class="fa fa-arrow-up" aria-hidden="true"></i>  <%= @exam_passed_sum_this_month %></span></p>
+          </div>
+      </div>
+  </div>
+  <% if @exam_sum > 0 %>
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+          <div class="card-header">
+            <h5><%= t ".statistics_test_by_date"%></h5>
+          </div>
+          <div class="card-block">
+              <%= line_chart Exam.group_by_day(:created_at, time_zone: "UTC").count %>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+          <div class="card-header">
+            <h5><%= t ".statistics_test_by_subject" %></h5>
+          </div>
+          <div class="card-block">
+              <%= pie_chart Subject.joins(:exams).group(:name).count %>
+          </div>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-12">
+      <div class="card">
+          <div class="card-header">
+            <h5><%= t ".statistics_test_by_status"%></h5>
+          </div>
+          <div class="card-block">
+              <%= pie_chart Exam.group(:status).count %>
+          </div>
+      </div>
+    </div>
+  <% end %>
   <div class="col-md-12">
-    <% if @subject_item.any? %>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th scope="col"><%= t ".name" %></th>
-            <th scope="col"><%= t ".description" %></th>
-            <th scope="col"><%= t ".total_ques" %></th>
-            <th scope="col"><%= t ".num_created" %></th>
-            <th scope="col"><%= t ".num_passed" %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @subject_item.each do |subject| %>
-            <tr>
-              <td><%= subject.name %></td>
-              <td><%= subject.description %></td>
-              <td><%= subject.questions_count %></td>
-              <td><%= subject.exams_count %></td>
-              <td><%= count_passed_exam subject %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <%== pagy_bootstrap_nav(@pagy) %>
-    <% else %>
-      <%= t ".no_subject" %>
-    <% end %>
+    <div class="card">
+        <div class="card-header">
+          <h5><%= t ".list_subject" %></h5>
+        </div>
+        <div class="card-block">
+            <% if @subject_item.any? %>
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"><%= t ".name" %></th>
+                    <th scope="col"><%= t ".description" %></th>
+                    <th scope="col"><%= t ".total_ques" %></th>
+                    <th scope="col"><%= t ".num_created" %></th>
+                    <th scope="col"><%= t ".num_passed" %></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @subject_item.each do |subject| %>
+                    <tr>
+                      <td><%= subject.name %></td>
+                      <td><%= subject.description %></td>
+                      <td><%= subject.questions_count %></td>
+                      <td><%= subject.exams_count %></td>
+                      <td><%= count_passed_exam subject %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <%== pagy_bootstrap_nav(@pagy) %>
+            <% else %>
+              <%= t ".no_subject" %>
+            <% end %>
+        </div>
+    </div>
   </div>
 </div>

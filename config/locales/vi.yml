@@ -106,6 +106,16 @@ vi:
         num_created: "Số bài kiểm tra đã tạo"
         num_passed: "Số bài kiểm tra đạt"
         description: "Mô tả"
+        user: "Người dùng"
+        subject: "Môn học"
+        exam: "Bài kiểm tra"
+        exam_passed: "Bài kiểm tra đạt"
+        this_month: "Tháng này"
+        statistics_test_by_date: "Thống kê các bài kiểm tra được tạo theo ngày"
+        statistics_test_by_subject: "Thống kê các bài kiểm tra theo môn học"
+        statistics_test_by_status: "Thống kê các bài kiểm tra theo trạng thái"
+        list_subject: "Danh sách thông tin môn học chi tiết"
+        no_subject: "Không có môn học nào"
     users:
       index:
         title: "Quản lý người dùng"

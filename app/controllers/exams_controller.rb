@@ -61,9 +61,7 @@ class ExamsController < ApplicationController
     exams = current_user.exams
 
     exams.each do |exam|
-      if exam.doing? && (exam.endtime <= Time.zone.now)
-        exam.grade(@exam.answers)
-      end
+      exam.grade(exam.answers) if exam.doing? && (exam.endtime <= Time.zone.now)
     end
   end
 
