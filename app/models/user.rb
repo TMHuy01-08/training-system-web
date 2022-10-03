@@ -20,8 +20,10 @@ class User < ApplicationRecord
                             maximum: Settings.max_length}
 
   validates :password, presence: true,
-                       length: {minimum: Settings.password_min_length},
+                       length: {minimum: Settings.password_min_length,
+                                maximum: Settings.password_max_length},
                        allow_nil: true
+
   scope :this_month, ->{where(created_at: Time.zone.today.all_month)}
 
   def activate_or_inactive

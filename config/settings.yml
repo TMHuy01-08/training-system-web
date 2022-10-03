@@ -4,6 +4,7 @@ pagy: 10
 max_length: 30
 description_max_length: 50
 password_min_length: 6
+password_max_length: 20
 paginate:
   limit: 20
 min_question: 2

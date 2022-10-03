@@ -25,7 +25,6 @@ gem "ransack"
 gem "roo"
 gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
-gem "tzinfo-data"
 gem "webpacker", "~> 5.0"
 
 group :development, :test do

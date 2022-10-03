@@ -27,6 +27,16 @@ Rails.application.routes.draw do
       end
       resources :answers
     end
-  end
 
+    namespace :api do
+      resources :users, only: %i(create edit update)
+      resources :sessions, only: %i(create)
+      resources :subjects, only: %i(index) do
+        resources :users, only: %i(index) do
+          resources :exams, only: %i(create index)
+        end
+      end
+      resources :exams, only: %i(show update)
+    end
+  end
 end
