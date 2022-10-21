@@ -1,7 +1,17 @@
 host: <%= ENV.fetch("HOST") { "local" } %>
 host_port: <%= ENV.fetch("PORT") { 4000 } %>
-host_email:
-mail_user_name:
-mail_user_password:
-mail_address:
-mail_port:
+
+host_email: "admin@sun-asterisk.com"
+mail_user_name: "a3ee983c7141f1"
+mail_user_password: "d8e659465a6e76"
+mail_address: "smtp.mailtrap.io"
+mail_domain: "smtp.mailtrap.io"
+mail_port: "2525"
+# setup gửi mail bằng mail thật
+
+# host_email: "admin@gmail.com"
+# mail_user_name: "luctq610@gmail.com"
+# mail_user_password: "fzzhvkcyopdcktrn" # Mật khẩu ứng dụng của gmail
+# mail_address: "smtp.gmail.com"
+# mail_domain: "smtp.gmail.com"
+# mail_port: "587"

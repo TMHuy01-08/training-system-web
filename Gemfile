@@ -25,14 +25,11 @@ gem "ransack"
 gem "roo"
 gem "sass-rails", ">= 6"
 gem "turbolinks", "~> 5"
+gem "tzinfo-data"
 gem "webpacker", "~> 5.0"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-end
-
-group :development, :test do
-  gem "rspec-rails", "~> 4.0.1"
 end
 
 group :development, :test do

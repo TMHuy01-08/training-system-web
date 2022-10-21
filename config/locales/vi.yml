@@ -1,7 +1,7 @@
 vi:
-  base_title: "Maxe"
-  maxe: "maxe"
-  maxe_admin: "maxe admin"
+  base_title: "Training System"
+  maxe: "training system"
+  maxe_admin: "training system admin"
   success_signup: "Chào mừng bạn đến với ứng dụng! Liên hệ quản trị viên để  được kích hoạt tài khoản"
   not_found: "Không tìm thấy"
   fail_signup: "Có lỗi xảy ra. Vui lòng thử lại"
@@ -35,21 +35,21 @@ vi:
   subjects:
     index:
       heading: "Trang chủ"
-      welcome: "Chào mừng đến với Maxe"
+      welcome: "Chào mừng đến với Training System"
       intro: "Hệ thống quản lý kỳ thi"
       signup: "Đăng ký ngay"
-      title: "Tất cả môn học"
+      title: "Danh sách môn học"
       name: "Tên môn học"
       ques_num: "Số câu hỏi"
       duration: "Thời gian (phút)"
       score_pass: "Điểm đạt"
       description: "Mô tả"
       no_subject: "Chưa có môn học"
-      all_exam: "Tất cả"
+      all_exam: "Danh sách"
       subject: "Môn học"
   static_pages:
     index:
-      title: "Tất cả môn học"
+      title: "Danh sách môn học"
       name: "Tên môn học"
       ques_num: "Số câu hỏi"
       duration: "Thời gian (phút)"
@@ -119,7 +119,7 @@ vi:
     users:
       index:
         title: "Quản lý người dùng"
-        heading: "Tất cả người dùng"
+        heading: "Danh sách người dùng"
         name: "Tên"
         email: "Địa chỉ Email"
         attended: Đã tham gia (môn học)
@@ -163,14 +163,14 @@ vi:
         create_failed: "Tạo câu hỏi chưa thành công"
         created: "Tạo câu hỏi thành công!"
       index:
-        all_question: "Tất cả câu hỏi"
+        title: "Danh sách câu hỏi"
         create: "Tạo câu hỏi mới"
       edit:
         title: "Chỉnh sửa câu hỏi"
         save_changes: "Lưu thay đổi"
     subjects:
       index:
-        title: "Tất cả môn học"
+        title: "Danh sách môn học"
         name: "Tên môn học"
         total_ques: "Tổng số câu hỏi"
         ques_num: "Số câu hỏi (trong bài kiểm tra)"
@@ -235,6 +235,15 @@ vi:
       completed: "Hoàn thành"
       failed: "Không đạt"
       passed: "Đạt"
+  user_mailer:
+    account_activation:
+      account_activation: "Kích hoạt tài khoản"
+      active_mail_content: "Tài khoản Training System được đăng ký bằng email này đã được kích hoạt bởi quản trị viên. Bạn có thể đăng nhập vào hệ thống tại: "
+      hi: "Chào"
+    account_inactivation:
+      account_inactivation: "Khóa tài khoản"
+      inactive_mail_content: "Tài khoản Training System được đăng ký bằng email này đã bị khóa bởi quản trị viên. Mọi thắc mắc liên hệ: admin@gmail.com"
+      hi: "Hi"
   activerecord:
     errors:
       models:

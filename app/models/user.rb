@@ -27,7 +27,23 @@ class User < ApplicationRecord
   scope :this_month, ->{where(created_at: Time.zone.today.all_month)}
 
   def activate_or_inactive
-    update activated: !activated, activated_at: Time.zone.now
+    unless update activated: !activated, activated_at: Time.zone.now
+      raise StadardError, "This is an exception"
+    end
+
+    if activated
+      send_activation_email
+    else
+      send_inactivation_email
+    end
+  end
+
+  def send_activation_email
+    UserMailer.account_activation(self).deliver_now
+  end
+
+  def send_inactivation_email
+    UserMailer.account_inactivation(self).deliver_now
   end
 
   private

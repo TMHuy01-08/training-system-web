@@ -1,8 +1,8 @@
 en:
-  base_title: "Maxe"
-  maxe: "maxe"
-  maxe_admin: "maxe admin"
-  success_signup: "Welcome to the Maxe App! Contact the administrator to activate the account"
+  base_title: "Training System"
+  maxe: "training system"
+  maxe_admin: "training system admin"
+  success_signup: "Welcome to the Training System App! Contact the administrator to activate the account"
   not_found: "Not found"
   fail_signup: "Errors occurred. Please try again"
   danger: "Please log in"
@@ -35,20 +35,20 @@ en:
   subjects:
     index:
       heading: "Home"
-      welcome: "Welcome to Maxe"
+      welcome: "Welcome to Training System"
       intro: "The exam management"
       signup: "Sign up now!"
-      title: "All subjects"
+      title: "List subjects"
       ques_num: "Question number"
       duration: "Duration (min)"
       score_pass: "Score to pass"
       description: "Description"
       no_subject: "No subject yet"
-      all_exam: "All"
+      all_exam: "List"
       subject: "Subject"
   static_pages:
     index:
-      title: "All subjects"
+      title: "List subjects"
       name: "Subject name"
       ques_num: "Question number"
       duration: "Duration (min)"
@@ -118,7 +118,7 @@ en:
     users:
       index:
         title: "Manage users"
-        heading: "All users"
+        heading: "List users"
         name: "Name"
         email: "Email"
         attended: "Attended (subject)"
@@ -162,14 +162,14 @@ en:
         create_failed: "Created failed!"
         created: "Created success!"
       index:
-        all_question: "All question"
+        tittle: "List question"
         create: "Create new question"
       edit:
         title: "Edit question"
         save_changes: "Save changes"
     subjects:
       index:
-        title: "All subjects"
+        title: "List subjects"
         name: "Subject name"
         total_ques: "Total number of questions"
         ques_num: "Question number (in the test)"
@@ -234,6 +234,15 @@ en:
       completed: "Completed"
       failed: "Failed"
       passed: "passed"
+  user_mailer:
+    account_activation:
+      account_activation: "Account activation"
+      active_mail_content: "The account of Training system registered by this email has been activated by the administrator. You can login to system at:  "
+      hi: "Hi"
+    account_inactivation:
+      account_inactivation: "Account inactivation"
+      inactive_mail_content: "The account of Training system registered by this email has been inactivated by the administrator.Any questions contact gmail: admin@gmail.com"
+      hi: "Hi"
   activerecord:
     errors:
       models:
