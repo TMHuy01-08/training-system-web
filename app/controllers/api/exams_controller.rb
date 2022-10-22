@@ -27,7 +27,7 @@ class Api::ExamsController < Api::ApiController
     if exam.present?
       @questions = exam.questions
       exam.set_endtime if exam.ready?
-      render json: {endtime: exam.endtime, list_question: @questions}
+      render json: {endtime: exam.endtime, list_question: handle_exam}
     else
       render json: {notice: "Error"}
     end
@@ -45,6 +45,26 @@ class Api::ExamsController < Api::ApiController
     list_question_random = random_list(question_number, questions.length)
     list_question_random.each do |random_number|
       @exam.add questions[random_number]
+    end
+  end
+
+  def handle_exam
+    @questions.map do |question|
+      ques = Hash.new
+      ques[:id] = question.id
+      ques[:question_type] = question.question_type
+      ques[:question_content] = question.question_content
+      ques[:list_ans] = handle_answer question.answers
+      ques
+    end
+  end
+
+  def handle_answer answers
+    answers.map do |answer|
+      ans = Hash.new
+      ans[:id] = answer.id
+      ans[:content] = answer.content
+      ans
     end
   end
 end

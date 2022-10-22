@@ -32,12 +32,12 @@ class Api::UsersController < Api::ApiController
     user = User.find_by id: params[:id]
     if user&.valid_password?(params[:cr_password])
       if user.update profile_params
-        render json: {notice: "Success"}
+        render json: {success: "Update successfully"}
       else
         render json: {notice: "Failed"}
       end
     else
-      render json: {notice: "Can't not find user / Password is incorrect"}
+      render json: {error: "Can't not find user / Password is incorrect"}
     end
   end
 
