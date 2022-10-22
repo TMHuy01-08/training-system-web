@@ -45,6 +45,7 @@ vi:
       score_pass: "Điểm đạt"
       description: "Mô tả"
       no_subject: "Chưa có môn học"
+      no_find_subject: "Không tìm thấy môn học phù hợp"
       all_exam: "Danh sách"
       subject: "Môn học"
   static_pages:
@@ -69,6 +70,10 @@ vi:
       login_success: "Đăng nhập thành công"
       account_not_activated: "Tài khoản chưa được kích hoạt. Liên hệ quản trị viên để  được kích hoạt tài khoản"
   registrations:
+    create:
+      invalid_email_password_combination: "Email và password không trùng khớp"
+      login_success: "Đăng nhập thành công"
+      account_not_activated: "Tài khoản chưa được kích hoạt. Liên hệ quản trị viên để  được kích hoạt tài khoản"
     new:
       title: "Đăng ký"
     edit:
@@ -115,7 +120,7 @@ vi:
         statistics_test_by_subject: "Thống kê các bài kiểm tra theo môn học"
         statistics_test_by_status: "Thống kê các bài kiểm tra theo trạng thái"
         list_subject: "Danh sách thông tin môn học chi tiết"
-        no_subject: "Không có môn học nào"
+        no_subject: "Chưa có môn học nào"
     users:
       index:
         title: "Quản lý người dùng"
@@ -125,7 +130,8 @@ vi:
         attended: Đã tham gia (môn học)
         passed: "Đã hoàn thành (môn học)"
         action: "Hành động"
-        no_user: "Chưa có môn học"
+        no_user: "Chưa có người dùng nào"
+        no_find_user: "Không tìm thấy người dùng phù hợp"
     account_activations:
       update:
         success_activated: "Kích hoạt tài khoản thành công"
@@ -163,6 +169,8 @@ vi:
         create_failed: "Tạo câu hỏi chưa thành công"
         created: "Tạo câu hỏi thành công!"
       index:
+        no_question: "Chưa có câu hỏi nào"
+        no_find_question: "Không tìm thấy câu hỏi phù hợp"
         title: "Danh sách câu hỏi"
         create: "Tạo câu hỏi mới"
       edit:
@@ -178,6 +186,7 @@ vi:
         score_pass: "Điểm đạt"
         description: "Mô tả"
         no_subject: "Chưa có môn học"
+        no_find_subject: "Không tìm thấy môn học phù hợp."
         create_new_subject: "Tạo môn học mới"
       new:
         title: "Tạo môn học mới"

@@ -4,7 +4,7 @@
 <div class="row">
   <div class="col-md-4 search-form">
     <%= search_form_for @search, url: admin_users_path, class: "form-inline" do |search| %>
-      <%= search.search_field :email, class: "form-control" %>
+      <%= search.search_field :email, class: "form-control", value: params[:q]? params[:q][:email] : "" %>
       <%= button_tag(type: :submit, class: "btn btn-primary") do %>
         <i class="glyphicon glyphicon-search"></i>
       <% end %>
@@ -43,7 +43,11 @@
       </table>
       <%== pagy_bootstrap_nav(@pagy) %>
     <% else %>
-      <%= t ".no_user" %>
+      <% if params[:q] %>
+          <%= t ".no_find_user" %>
+      <% else %>
+        <%= t ".no_user" %>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -44,6 +44,7 @@ en:
       score_pass: "Score to pass"
       description: "Description"
       no_subject: "No subject yet"
+      no_find_subject: "No matching subjects found"
       all_exam: "List"
       subject: "Subject"
   static_pages:
@@ -68,6 +69,10 @@ en:
       login_success: "Log in successfully"
       account_not_activated: "Account not activated. Contact the administrator to activate the account"
   registrations:
+    create:
+      invalid_email_password_combination: "Invalid email/password combination"
+      login_success: "Log in successfully"
+      account_not_activated: "Account not activated. Contact the administrator to activate the account"
     new:
       title: "Sign up"
     edit:
@@ -114,7 +119,7 @@ en:
         statistics_test_by_subject: "Statistics of tests by subject"
         statistics_test_by_status: "Statistics of tests by status"
         list_subject: "List of detailed subject information"
-        no_subject: "No subjects available"
+        no_subject: "No subjects yet"
     users:
       index:
         title: "Manage users"
@@ -125,6 +130,7 @@ en:
         passed: "Passed (subject)"
         action: "Action"
         no_user: "No user yet"
+        no_find_user: "No matching users found"
     account_activations:
       update:
         success_activated: "Account activated"
@@ -165,6 +171,8 @@ en:
         tittle: "List question"
         create: "Create new question"
       edit:
+        no_question: "No question yet"
+        no_find_question: "No matching questions found"
         title: "Edit question"
         save_changes: "Save changes"
     subjects:
@@ -177,6 +185,7 @@ en:
         score_pass: "Score to pass"
         description: "Description"
         no_subject: "No subject yet"
+        no_find_subject: "No matching subjects found"
         create_new_subject: "New subjects"
       new:
         title: "New subjects"
