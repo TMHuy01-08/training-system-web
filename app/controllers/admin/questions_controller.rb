@@ -8,6 +8,11 @@ class Admin::QuestionsController < Admin::BaseController
                                 params[:q] ? params[:q][:question_content] : ""
     @search.sorts = params.dig(:q, :s) || "id asc"
     handle_param
+    @questions_export = Question.all
+    respond_to do |format|
+      format.html
+      format.xlsx
+    end
   end
 
   def new

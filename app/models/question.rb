@@ -107,6 +107,12 @@ class Question < ApplicationRecord
     end
   end
 
+  def get_answers
+    answers.map do |answer|
+      "#{answer.content}:#{answer.is_correct}"
+    end.join(",")
+  end
+
   def question_image_path
     ActiveStorage::Blob.service.path_for(question_image.key)
   end

@@ -1,0 +1,27 @@
+wb = xlsx_package.workbook
+wb.styles do |style|
+  wb.add_worksheet(name: 'questions') do |sheet|
+    sheet.add_row ["subject", "question type", "question content", "answers attributes"]
+    if @questions_export.length > 0
+      @questions_export.each_with_index do |question, index|
+        if question.question_image.attached?
+          height_row = 50
+          width_column = 15
+          img = File.expand_path(Rails.root + question.question_image_path)
+          sheet.add_image(:image_src => img, start_at: "E#{index+2}", end_at: "F#{index+3}")
+        end
+        sheet.add_row [question.subject.name,
+                      question.question_type,
+                      question.question_content,
+                      question.get_answers], height: height_row
+        sheet.column_widths nil, nil, nil, nil, width_column
+      end
+    else
+       sheet.add_row ["Example: C++, Java,..",
+                      "0 là single choice, 1 is muitiple choice.",
+                      "question content",
+                      "answer1:0,answer2:1(0 is false, 1 is true)"]
+    end
+
+  end
+end

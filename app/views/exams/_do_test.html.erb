@@ -1,8 +1,11 @@
 <%= form_for @exam, url: subject_exam_path(@subject.id, @exam.id), html: {class: "form-horizontal"} do |form| %>
   <% object.each_with_index do |question, index| %>
     <span class="question-title">
-      <%= t ".question" %> <%= index + 1 %>:
-      <%=form.label :question_id, question.question_content %>
+      <div>
+        <%= t ".question" %> <%= index + 1 %>:
+        <%=form.label :question_id, question.question_content %>
+      </div>
+      <%= image_tag question.question_image, style: "height: 150px; width: auto; max-width: 100%; object-fit: cover; margin-left: 30px;" if question.question_image.attached? %>
     </span>
     <br>
     <% if question.question_type == Question.types[:single] %>

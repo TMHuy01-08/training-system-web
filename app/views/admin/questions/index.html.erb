@@ -1,5 +1,11 @@
 <% provide(:title, t(".title")) %>
-<h1><%= t ".title" %></h1>
+<h1>
+  <%= t ".title" %>
+  <%= link_to admin_questions_path(format: :xlsx,),
+                                     :data => {:confirm => @questions_export.length > 0?  "Are you sure export to excel?" : "No question yet. Are you sure export the template excel?"} do %>
+    <i class="fa fa-file-excel-o "></i>
+  <% end %>
+</h1>
 <div id="modal-image">
   <span class="close-modal">&times;</span>
   <img class="modal-content" id="image-modal">
