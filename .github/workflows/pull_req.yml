@@ -41,11 +41,12 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
         
       - name: Build and push
+        if: steps.existed.outcome == 'failure'
         uses: docker/build-push-action@v3
         with:
           context: .
+          file: Dockerfile.v2
           push: true
-          target: production
-          tags: ${{ env.image_repository }}:${{ steps.tags.outputs.tag }}
+          tags: ${{ env.image_repository }}:${{ steps.tags.outputs.value }}
           cache-from: type=registry,ref=${{ env.image_repository }}:buildcache
           cache-to: type=registry,ref=${{ env.image_repository }}:buildcache,mode=max
