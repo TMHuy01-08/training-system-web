@@ -81,7 +81,7 @@ class Api::ExamsController < Api::ApiController
     ques[:id] = question.id
     ques[:question_type] = question.question_type
     ques[:question_content] = question.question_content
-    ques[:img] = question.question_image if question.question_image.attached?
+    ques[:img] = question.question_image_url if question.question_image.attached?
     ques[:list_ans] = handle_answer question.answers
     ques
   end

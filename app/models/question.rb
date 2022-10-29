@@ -1,4 +1,6 @@
 class Question < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   NESTED_ATTRS = %i(id content is_correct _destroy).freeze
   QUESTION_ATTRS = %i(question_content question_image subject_id question_type)
                    .push(answers_attributes: NESTED_ATTRS)
@@ -115,6 +117,10 @@ class Question < ApplicationRecord
 
   def question_image_path
     ActiveStorage::Blob.service.path_for(question_image.key)
+  end
+
+  def question_image_url
+    rails_blob_url(question_image, only_path: false)
   end
 
   private

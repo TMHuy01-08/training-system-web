@@ -75,9 +75,18 @@ en:
       account_not_activated: "Account not activated. Contact the administrator to activate the account"
     new:
       title: "Sign up"
+      email: "Email"
+      name: "Name"
+      password: "Password (6 characters minimum)"
+      password_confirm: "Password Confirmation"
     edit:
       title: "Edit account"
       update: "Update"
+      email: "Email"
+      name: "Name"
+      password: "Password (leave blank if you don't want to change it)"
+      password_confirm: "Password Confirmation"
+      current_password: "Current password (we need your current password to confirm your changes)"
   exams:
     index:
       practice: "Practice"
@@ -168,11 +177,15 @@ en:
         create_failed: "Created failed!"
         created: "Created success!"
       index:
-        tittle: "List question"
-        create: "Create new question"
-      edit:
         no_question: "No question yet"
         no_find_question: "No matching questions found"
+        tittle: "List question"
+        create: "Create new question"
+        question_content: "Question content"
+        question_type: "Question type"
+        subject: "Subject"
+        action: "Action"
+      edit:
         title: "Edit question"
         save_changes: "Save changes"
     subjects:

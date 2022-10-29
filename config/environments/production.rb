@@ -129,4 +129,5 @@ Rails.application.configure do
     :port => "587",
     :authentication => :plain
   }
+  routes.default_url_options[:host] = 'training-system.aqaurius6666.space'
 end

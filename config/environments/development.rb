@@ -91,4 +91,5 @@ Rails.application.configure do
     :port => ENV["mail_port"],
     :authentication => :plain
   }
+  routes.default_url_options[:host] =  "localhost:4000" 
 end

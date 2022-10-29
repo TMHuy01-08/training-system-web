@@ -76,9 +76,18 @@ vi:
       account_not_activated: "Tài khoản chưa được kích hoạt. Liên hệ quản trị viên để  được kích hoạt tài khoản"
     new:
       title: "Đăng ký"
+      email: "Email"
+      name: "Tên"
+      password: "Mật khẩu (tối thiểu 6 kí tự)"
+      password_confirm: "Xác nhận mật khẩu"
     edit:
       title: "Chỉnh sửa tài khoản"
       update: "Cập nhật"
+      email: "Email"
+      name: "Tên"
+      password: "Mật khẩu (Để trống nếu không muốn thay đổi)"
+      password_confirm: "Xác nhận mật khẩu"
+      current_password: "Mật khẩu hiện tai (Bạn cần điền mật khẩu hiện tại để xác nhận thay đổi)"
   exams:
     index:
       practice: "Luyện tập"
@@ -173,6 +182,10 @@ vi:
         no_find_question: "Không tìm thấy câu hỏi phù hợp"
         title: "Danh sách câu hỏi"
         create: "Tạo câu hỏi mới"
+        question_content: "Nội dung câu hỏi"
+        question_type: "Loại câu hỏi"
+        subject: "Môn học"
+        action: "Thao tác"
       edit:
         title: "Chỉnh sửa câu hỏi"
         save_changes: "Lưu thay đổi"
