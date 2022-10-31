@@ -56,7 +56,7 @@ jobs:
       - name: Azure Pipelines Action
         uses: alexrster/pipelines@v2
         with:
-          azure-devops-project-url: https://dev.azure.com/aqaurius6666/Chuyen-de-nhat-ban
-          azure-pipeline-name: 'Training-system-web'
+          azure-devops-project-url: ${{ secrets.AZURE_URL }}
+          azure-pipeline-name: ${{ secrets.AZURE_PIPELINE_NAME }}
           azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
           azure-pipeline-variables: '{"TAG": "${{ needs.build.outputs.tag }}", "IMAGE_REPOSITORY" : "${{ env.image_repository }}"}'

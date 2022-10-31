@@ -1,0 +1,40 @@
+trigger: none
+
+variables:
+  azPool: 'My linux'
+  k8sNamespace: 'training-system'
+  k8sReleaseName: 'training-system-web'
+  k8sServiceConnection: '10.10.10.8'
+
+pool: $(azPool)
+
+
+stages:
+  - stage: Deploy
+    displayName: Deploy to K8S
+    jobs:
+      - job: Deploy
+        displayName: Deploy to K8s
+        steps:
+          - task: CmdLine@2
+            displayName: Setup values.yaml & .env
+            inputs:
+              script: |
+                envsubst < values.tpl.yaml > values.yaml
+                envsubst < .env.tpl > .env
+              workingDirectory: $(System.DefaultWorkingDirectory)/deploy/prod/myapp
+              failOnStderr: false
+          - task: HelmDeploy@0
+            displayName: Deploy helm chart
+            inputs:
+              connectionType: 'Kubernetes Service Connection'
+              kubernetesServiceConnection: $(k8sServiceConnection)
+              namespace: $(k8sNamespace)
+              command: 'upgrade'
+              chartType: 'FilePath'
+              chartPath: $(System.DefaultWorkingDirectory)/deploy/prod/myapp
+              releaseName: $(k8sReleaseName)
+              valueFile: $(System.DefaultWorkingDirectory)/deploy/prod/myapp/values.yaml
+              arguments: |
+                --dependency-update
+              failOnStderr: true
