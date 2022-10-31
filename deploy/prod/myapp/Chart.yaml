@@ -27,4 +27,4 @@ dependencies:
   - name: sish-client
     condition: sish-client.enabled
     repository: https://aqaurius6666.github.io/helm-charts 
-    version: 0.4.0
+    version: 0.6.0

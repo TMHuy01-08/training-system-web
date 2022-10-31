@@ -77,28 +77,21 @@ tolerations: []
 affinity: {}
 
 sish-client:
-  replicaCount: 1
+  dns_resolver:
+    enabled: false
   enabled: ${SISH_ENABLED}
-  revisionHistoryLimit: 1
   image:
     repository: kroniak/ssh-client
     tag: latest
-    pullPolicy: Always
-  startupProbe:
-    failureThreshold:
-    periodSeconds:
-  livenessProbe:
-    failureThreshold: 1
-    periodSeconds: 10
   service:
     name: ssh-tunnel
   services:
     sish:
       domain: ${DOMAIN}
-      port: ${SSH_PORT}
+      port: 22222
       request:
         domain: ${SUB_DOMAIN}
-        port: ${REQUEST_PORT}
+        port: 80
       from:
         domain: ${FROM_DOMAIN}
         port: ${FROM_PORT}
