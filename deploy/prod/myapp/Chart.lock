@@ -2,5 +2,8 @@ dependencies:
 - name: sish-client
   repository: https://aqaurius6666.github.io/helm-charts
   version: 0.6.0
-digest: sha256:3265c16496658c86bd170bc09c75078a1e8db618bee7fbbcd82926fe4d09e0cf
-generated: "2022-10-31T16:07:36.035207558+07:00"
+- name: mysql
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.4.1
+digest: sha256:6ae0aec4139fb85bd097c8248e13ea1b556b273b4b1d345322f65abec6e30b93
+generated: "2022-11-04T16:08:12.292776+07:00"

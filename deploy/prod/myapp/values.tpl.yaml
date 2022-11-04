@@ -95,3 +95,32 @@ sish-client:
       from:
         domain: ${FROM_DOMAIN}
         port: ${FROM_PORT}
+
+mysql:
+  enabled: true
+  image:
+    tag: 8.0.30-debian-11-r19
+  architecture: standalone
+  auth:
+    # rootPassword: rootpass
+    createDatabase: true
+    database: db
+    username: user
+    password: pass
+  primary:
+    livenessProbe:
+      enabled: false
+    readinessProbe:
+      enabled: false
+    startupProbe:
+      enabled: false
+    resources:
+      limits:
+        cpu: 200m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 128Mi
+    persistence:
+      enabled: true
+      storageClass: microk8s-hostpath
