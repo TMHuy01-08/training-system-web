@@ -102,7 +102,7 @@ mysql:
     tag: 8.0.30-debian-11-r19
   architecture: standalone
   auth:
-    # rootPassword: rootpass
+    rootPassword: rootpass
     createDatabase: true
     database: db
     username: user
