@@ -109,11 +109,14 @@ mysql:
     password: pass
   primary:
     livenessProbe:
-      enabled: false
+      enabled: true
+      initialDelaySeconds: 50
     readinessProbe:
-      enabled: false
+      enabled: true
+      initialDelaySeconds: 50
     startupProbe:
-      enabled: false
+      enabled: true
+      initialDelaySeconds: 50
     resources:
       limits:
         cpu: 200m
