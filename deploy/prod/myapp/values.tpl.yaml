@@ -119,11 +119,11 @@ mysql:
       initialDelaySeconds: 200
     resources:
       limits:
+        cpu: 400m
+        memory: 512Mi
+      requests:
         cpu: 200m
         memory: 256Mi
-      requests:
-        cpu: 100m
-        memory: 128Mi
     persistence:
       enabled: true
       storageClass: microk8s-hostpath
