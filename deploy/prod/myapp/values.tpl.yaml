@@ -110,13 +110,13 @@ mysql:
   primary:
     livenessProbe:
       enabled: true
-      initialDelaySeconds: 50
+      initialDelaySeconds: 100
     readinessProbe:
       enabled: true
-      initialDelaySeconds: 50
+      initialDelaySeconds: 100
     startupProbe:
       enabled: true
-      initialDelaySeconds: 50
+      initialDelaySeconds: 100
     resources:
       limits:
         cpu: 200m
