@@ -1,10 +1,10 @@
 trigger: none
 
 variables:
-  azPool: ${AZURE_POOL}
-  k8sNamespace: ${K8S_NAMESPACE}
-  k8sReleaseName: ${K8S_RELEASE_NAME}
-  k8sServiceConnection: ${K8S_SERVICE_CONNECTION}
+  azPool: $(AZURE_POOL)
+  k8sNamespace: $(K8S_NAMESPACE)
+  k8sReleaseName: $(K8S_RELEASE_NAME)
+  k8sServiceConnection: $(K8S_SERVICE_CONNECTION)
 
 pool: $(azPool)
 
