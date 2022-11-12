@@ -61,10 +61,10 @@ resources:
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   limits:
-    cpu: 300m
+    cpu: 200m
     memory: 512Mi
   requests:
-    cpu: 200m
+    cpu: 100m
     memory: 128Mi
 
 autoscaling:
@@ -119,7 +119,7 @@ mysql:
       initialDelaySeconds: 200
     resources:
       limits:
-        cpu: 400m
+        cpu: 300m
         memory: 512Mi
       requests:
         cpu: 200m
