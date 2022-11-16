@@ -81,7 +81,10 @@ class Api::ExamsController < Api::ApiController
     ques[:id] = question.id
     ques[:question_type] = question.question_type
     ques[:question_content] = question.question_content
-    ques[:img] = question.question_image_url if question.question_image.attached?
+    if question.question_image.attached?
+      ques[:img] = question.question_image_url
+    end
+
     ques[:list_ans] = handle_answer question.answers
     ques
   end
@@ -106,7 +109,7 @@ class Api::ExamsController < Api::ApiController
       ques = get_ques(question)
       ques[:choosed] = @list_answer.map do |answer|
         answer.id if answer.question_id == question.id
-      end.compact!
+      end.compact
       ques[:result] = result_of_question(@list_answer, question)
       ques
     end
