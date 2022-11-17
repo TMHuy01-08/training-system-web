@@ -107,6 +107,7 @@ en:
       submit: "Submit"
       question: "Question"
       time_remaining: "Time Remaining:"
+      confirm_submit_exam: "Are you sure you want to submit?"
     view_test:
       question: "Question"
   admin:
@@ -185,6 +186,9 @@ en:
         question_type: "Question type"
         subject: "Subject"
         action: "Action"
+        confirm_export_1: "Are you sure export to excel?"
+        confirm_export_2: "No question yet. Are you sure export the template excel?"
+        confirm_delete_question: "Are you sure to delete this question?"
       edit:
         title: "Edit question"
         save_changes: "Save changes"

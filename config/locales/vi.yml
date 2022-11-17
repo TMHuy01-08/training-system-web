@@ -108,6 +108,7 @@ vi:
       submit: "Nộp bài"
       question: "Câu hỏi"
       time_remaining: "Thời gian còn lại:"
+      confirm_submit_exam: "Bạn chắc chắn muốn nộp bài chứ?"
     view_test:
       question: "Câu hỏi"
   admin:
@@ -186,6 +187,9 @@ vi:
         question_type: "Loại câu hỏi"
         subject: "Môn học"
         action: "Thao tác"
+        confirm_export_1: "Bạn có chắc chắn muốn export danh sách câu hỏi ra excel?"
+        confirm_export_2: "Hiện tại không có câu hỏi. Bạn có muốn export một tệp excel mẫu về danh sách câu hỏi?"
+        confirm_delete_question: "Bạn có chắc chắn muốn xóa câu hỏi này?"
       edit:
         title: "Chỉnh sửa câu hỏi"
         save_changes: "Lưu thay đổi"

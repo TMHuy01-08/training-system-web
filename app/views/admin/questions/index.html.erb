@@ -2,7 +2,7 @@
 <h1>
   <%= t ".title" %>
   <%= link_to admin_questions_path(format: :xlsx,),
-                                     :data => {:confirm => @questions_export.length > 0?  "Are you sure export to excel?" : "No question yet. Are you sure export the template excel?"} do %>
+                                     :data => {:confirm => @questions_export.length > 0?  t(".confirm_export_1") : "confirm_export_2"} do %>
     <i class="fa fa-file-excel-o "></i>
   <% end %>
 </h1>
@@ -59,7 +59,7 @@
                   <i class="fa fa-pencil-square icon edit-icon" aria-hidden="true"></i>
                 <% end %>
                 <%= link_to admin_question_path(question.id),
-                            data: {confirm: "Are you sure to delete this question?"}, method: :delete do %>
+                            data: {confirm: t(".confirm_delete_question") }, method: :delete do %>
                   <i class="fa fa-trash icon delete-icon" aria-hidden="true"></i>
                 <% end %>
               </td>
