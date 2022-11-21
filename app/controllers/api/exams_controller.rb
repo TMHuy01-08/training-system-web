@@ -1,6 +1,7 @@
 class Api::ExamsController < Api::ApiController
   before_action :find_exam, only: %i(show update)
   before_action :add_answer_to_record, only: %i(update)
+  before_action :time_out, only: %i(index)
 
   def index
     @list_exam = Exam.newest.by_subject_id(params[:subject_id])
@@ -143,5 +144,13 @@ class Api::ExamsController < Api::ApiController
       end
     end
     result
+  end
+
+  def time_out
+    exams = Exam.by_user(params[:user_id]).by_subject_id(params[:subject_id])
+
+    exams.each do |exam|
+      exam.grade(exam.answers) if exam.doing? && (exam.endtime <= Time.zone.now)
+    end
   end
 end
