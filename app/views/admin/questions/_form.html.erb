@@ -5,9 +5,8 @@
       <%= form.text_area :question_content, class: "form-control custom-textarea-question-content", required: true %>
       <div class="input-file">
         <%= form.file_field :question_image, accept:"image/jpeg,image/gif,image/png"%>
-        <label for="question_question_image">Attach images to question (PNG, JPG)</label>
+        <label for="question_question_image"><%= t ".attach_file" %></label>
         <% if @question.question_image.attached? %>
-          <%= @question.question_image_path %>
           <ul class="preview" style="display: flex;">
             <%= form.hidden_field :is_attach_image, value: true %>
             <li>

@@ -47,10 +47,10 @@ class Admin::QuestionsController < Admin::BaseController
     @question.question_image.purge unless params[:question][:is_attach_image]
     @subject_id = @question.subject_id
     if @question.update question_params
-      flash[:success] = "update_success"
+      flash[:success] = t ".updated"
       redirect_back_or admin_questions_path
     else
-      flash[:danger] = "update_false"
+      flash[:danger] = t ".update_failed"
       render :edit
     end
   end
@@ -58,20 +58,20 @@ class Admin::QuestionsController < Admin::BaseController
   def import
     arr_file = Settings.import
     if params[:file].blank?
-      flash[:danger] = "Fields cannot be blank!"
+      flash[:danger] = t ".not_blank"
     elsif arr_file.include? params[:file].original_filename.split(".").last
       import_file
     else
-      flash[:danger] = "Not format"
+      flash[:danger] = t ".not_format"
     end
     redirect_to admin_questions_path
   end
 
   def destroy
     if @question.includes(answers: :exam_relationships).destroy(params[:id])
-      flash[:success] = "Question deleted"
+      flash[:success] = t ".question_deleted"
     else
-      flash[:danger] =  "Questiom delete failed"
+      flash[:danger] =  t ".question_deleted_fail"
     end
     redirect_back_or admin_questions_path
   end
@@ -85,7 +85,7 @@ class Admin::QuestionsController < Admin::BaseController
     @question = Question.get_by_id(params[:id])
     return if @question.present?
 
-    flash[:danger] = t "not_found"
+    flash[:danger] = t ".not_found"
     redirect_to admin_questions_path
   end
 
@@ -101,9 +101,9 @@ class Admin::QuestionsController < Admin::BaseController
 
   def import_file
     if Question.import(params[:file])
-      flash[:success] = "Question imported."
+      flash[:success] = t ".question_imported"
     else
-      flash[:danger] = "Question import failed"
+      flash[:danger] = t ".question_import_failed"
     end
   end
 end

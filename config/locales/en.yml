@@ -167,6 +167,7 @@ en:
         subject: "Subject"
         type: "Question type"
         save: "Save"
+        attach_file: "Attach images to question (PNG, JPG)"
       answer_fields:
         answer_content: "Answer content"
         is_correct: "Is Correct"
@@ -177,6 +178,19 @@ en:
       create:
         create_failed: "Created failed!"
         created: "Created success!"
+      update:
+        updated: "Updated success!"
+        update_failed: "Updated failed"
+      import:
+        not_blank: "No files selected"
+        not_format: "Not format"
+        question_imported: "Question imported"
+        question_import_failed: "Question import failed"
+      destroy:
+        question_deleted: "Question deleted"
+        question_deleted_fail: "Question delete fail"
+      find_question:
+        not_found: "Question not found"
       index:
         no_question: "No question yet"
         no_find_question: "No matching questions found"
@@ -207,6 +221,7 @@ en:
       new:
         title: "New subjects"
         create: "Create"
+        not_found: "Subject not found"
       create:
         success_create: "Successfully created a new subject"
         fail_create: "New creation failed"
@@ -225,6 +240,8 @@ en:
       destroy:
         subject_deleted: "Subject deleted"
         subject_delete_fail: "Subject delete fail"
+      find_subject:
+        not_found: "Subject not found"
     exams:
       index:
         title: "List of test"

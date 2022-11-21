@@ -20,7 +20,7 @@ wb.styles do |style|
        sheet.add_row ["Example: C++, Java,..",
                       "0 là single choice, 1 is muitiple choice.",
                       "question content",
-                      "answer1:0,answer2:1(0 is false, 1 is true)"]
+                      "answer1:0;answer2:1(0 is false, 1 is true)"]
     end
 
   end

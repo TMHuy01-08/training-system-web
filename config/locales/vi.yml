@@ -168,6 +168,7 @@ vi:
         subject: "Môn học"
         type: "Loại câu hỏi"
         save: "Lưu"
+        attach_file: "Đính kèm ảnh cho câu hỏi (PNG, JPG)"
       answer_fields:
         answer_content: "Nội dung"
         is_correct: "Đúng"
@@ -178,6 +179,19 @@ vi:
       create:
         create_failed: "Tạo câu hỏi chưa thành công"
         created: "Tạo câu hỏi thành công!"
+      update:
+        updated: "Cập nhật thành công"
+        update_failed: "Cập nhật thất bại"
+      import:
+        not_blank: "Chưa có tệp nào được chọn"
+        not_format: "Không đúng format tệp"
+        question_imported: "Đã nhâp thành công câu hỏi"
+        question_import_failed: "Nhập các câu hỏi thất bại"
+      destroy:
+        question_deleted: "Câu hỏi đã được xóa"
+        question_deleted_fail: "Xóa câu hỏi thất bại"
+      find_question:
+        not_found: "Không tìm thấy câu hỏi"
       index:
         no_question: "Chưa có câu hỏi nào"
         no_find_question: "Không tìm thấy câu hỏi phù hợp"
@@ -208,6 +222,7 @@ vi:
       new:
         title: "Tạo môn học mới"
         create: "Tạo mới"
+        not_found: "Không tìm thấy môn học nào"
       create:
         success_create: "Đã tạo thành công một môn học mới"
         fail_create: "Tạo môn học mới thất bại"
@@ -226,6 +241,8 @@ vi:
       destroy:
         subject_deleted: "Đã xóa môn học"
         subject_delete_fail: "Xóa nmôn học thất bại"
+      find_subject:
+        not_found: "Không tìm thấy môn học nào"
     exams:
       index:
         title: "Danh sách bài kiểm tra"

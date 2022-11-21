@@ -99,7 +99,7 @@ class Question < ApplicationRecord
     protected
 
     def handel_excel row
-      row.split(",").map do |attribute|
+      row.split(";").map do |attribute|
         attribute_hash = Hash.new
         arr_option = attribute.split(":")
         attribute_hash[:content] = arr_option[0]
@@ -112,7 +112,7 @@ class Question < ApplicationRecord
   def get_answers
     answers.map do |answer|
       "#{answer.content}:#{answer.is_correct}"
-    end.join(",")
+    end.join(";")
   end
 
   def question_image_path

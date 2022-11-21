@@ -11,7 +11,7 @@ class Admin::SubjectsController < Admin::BaseController
     @subject = Subject.new
     return if @subject
 
-    flash.now[:error] = t "not_found"
+    flash.now[:error] = t ".not_found"
     redirect_to root_path
   end
 
@@ -56,7 +56,7 @@ class Admin::SubjectsController < Admin::BaseController
     @subject = Subject.find_by id: params[:id]
     return if @subject.present?
 
-    flash[:danger] = t "not_found"
+    flash[:danger] = t ".not_found"
     redirect_to admin_subjects_path
   end
 end
