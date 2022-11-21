@@ -48,7 +48,7 @@ $(document).on("turbolinks:load", function () {
         clearInterval(interval);
       if (seconds <= 0 && minutes <= 0) clearInterval(interval);
       if (timer2 == "0:00") {
-        $(".submit-exam").click();
+        $("#submit-exam-hidden").click();
       }
     }, 1000);
   }
