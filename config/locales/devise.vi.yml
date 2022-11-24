@@ -10,7 +10,7 @@ vi:
       invalid: "%{authentication_keys} hoặc mật khẩu sai."
       locked: "Tài khoản của bạn bị khóa"
       last_attempt: "Bạn còn một lần thử nữa trước khi tài khoản của bạn bị khóa."
-      not_found_in_database: "Invalid %{authentication_keys} or password."
+      not_found_in_database: "%{authentication_keys} hoặc mật khẩu sai"
       timeout: "Phiên của bạn đã hết hạn. Vui lòng đăng nhập lại để tiếp tục."
       unauthenticated: "Bạn cần đăng nhập hoặc đăng ký trước khi tiếp tục."
       unconfirmed: "Bạn phải xác nhận địa chỉ email của mình trước khi tiếp tục."
@@ -25,9 +25,15 @@ vi:
         subject: "Email đã thay đổi"
       password_change:
         subject: "Mật khẩu đã được thay đổi"
+      reset_password_instructions:
+        greeting: "Xin chào"
+        content: "Ai đó đã yêu cầu một liên kết để thay đổi mật khẩu của bạn. Bạn có thể làm điều này thông qua liên kết dưới đây."
+        skip_email: "Nếu bạn không yêu cầu điều này, vui lòng bỏ qua email này."
+        warning: "Mật khẩu của bạn sẽ không thay đổi cho đến khi bạn truy cập vào liên kết ở trên và tạo một mật khẩu mới."
+        change_password: "Change Password"
     omniauth_callbacks:
-      failure: 'Could not authenticate you from %{kind} because "%{reason}".'
-      success: "Successfully authenticated from %{kind} account."
+      failure: 'Không thể xác thực từ %{kind} bởi vì "%{reason}".'
+      success: "Xác thực thành công từ tài khoản %{kind}."
     passwords:
       new:
         title: "Quên mật khẩu"
@@ -75,5 +81,5 @@ vi:
       not_found: "Không tìm thấy"
       not_locked: "không bị khóa"
       not_saved:
-        one: "1 error prohibited this %{resource} from being saved:"
-        other: "%{count} errors prohibited this %{resource} from being saved:"
+        one: "Có một lỗi khiến %{resource} không lưu được:"
+        other: "%{count} lỗi đã ngăn không lưu %{resource}:"

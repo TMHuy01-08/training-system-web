@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     namespace :admin do
       root to: "static_pages#index"
       resources :static_pages, only: %i(index)
-      resources :users, only: %i(index)
+      resources :users, only: %i(index, destroy)
       resources :users do
         resources :exams, only: %i(index show)
       end

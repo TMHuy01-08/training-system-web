@@ -25,6 +25,12 @@ en:
         subject: "Email Changed"
       password_change:
         subject: "Password Changed"
+      reset_password_instructions:
+        greeting: "Hello"
+        content: "Someone has requested a link to change your password. You can do this through the link below."
+        skip_email: "If you didn't request this, please ignore this email."
+        warning: "Your password won't change until you access the link above and create a new one."
+        change_password: "Change Password"
     omniauth_callbacks:
       failure: 'Could not authenticate you from %{kind} because "%{reason}".'
       success: "Successfully authenticated from %{kind} account."

@@ -141,6 +141,9 @@ en:
         action: "Action"
         no_user: "No user yet"
         no_find_user: "No matching users found"
+      destroy:
+        user_deleted: "User deleted"
+        user_fail: "User delete fail"
     account_activations:
       update:
         success_activated: "Account activated"

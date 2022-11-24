@@ -142,6 +142,9 @@ vi:
         action: "Hành động"
         no_user: "Chưa có người dùng nào"
         no_find_user: "Không tìm thấy người dùng phù hợp"
+      destroy:
+        user_deleted: "User deleted"
+        user_fail: "User delete fail"
     account_activations:
       update:
         success_activated: "Kích hoạt tài khoản thành công"

@@ -36,6 +36,9 @@
                 <%= link_to admin_account_activation_path(user.id), method: :patch do %>
                   <i class="<%= icon_active_or_inactive(user) %>" aria-hidden="true"></i>
                 <% end %>
+                <%= link_to admin_user_path(user.id), method: :delete, style: "margin-left: 15px;" do %>
+                  <i class="fa fa-trash icon delete-icon" aria-hidden="true"></i>
+                <% end %>
               </td>
             </tr>
           <% end %>
