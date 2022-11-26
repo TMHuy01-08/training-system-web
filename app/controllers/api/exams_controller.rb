@@ -1,4 +1,5 @@
 class Api::ExamsController < Api::ApiController
+  include ExamsHelper
   before_action :find_exam, only: %i(show update)
   before_action :add_answer_to_record, only: %i(update)
   before_action :time_out, only: %i(index)
