@@ -60,12 +60,9 @@ resources:
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  limits:
-    cpu: 200m
-    memory: 512Mi
   requests:
-    cpu: 100m
-    memory: 128Mi
+    cpu: 10m
+    memory: 64Mi
 
 autoscaling:
   enabled: false
@@ -118,12 +115,9 @@ mysql:
       enabled: true
       initialDelaySeconds: 200
     resources:
-      limits:
-        cpu: 300m
-        memory: 512Mi
       requests:
-        cpu: 200m
-        memory: 256Mi
+        cpu: 20m
+        memory: 128Mi
     persistence:
       enabled: true
       storageClass: microk8s-hostpath
